@@ -1,56 +1,44 @@
-bot_template = """
-<div style="
-    background-color: #f7f9fc;
-    color: #343a40;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    max-width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-">
-    <strong>🤖 Bot:</strong>
-    <p>{message}</p>
-</div>
-"""
-
-user_template = """
-<div style="
-    background-color: #d1e7dd;
-    color: #0f5132;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    max-width: 80%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-">
-    <strong>👤 You:</strong>
-    <p>{message}</p>
-</div>
-"""
-
-css_template = """
+css = '''
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f9fa;
-    }
+.chat-message {
+    padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem; display: flex
+}
+.chat-message.user {
+    background-color: #2b313e
+}
+.chat-message.bot {
+    background-color: #475063
+}
+.chat-message .avatar {
+  width: 20%;
+}
+.chat-message .avatar img {
+  max-width: 78px;
+  max-height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.chat-message .message {
+  width: 80%;
+  padding: 0 1.5rem;
+  color: #fff;
+}
+'''
 
-    .stChatContainer {
-        display: flex;
-        flex-direction: column;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+bot_template = '''
+<div class="chat-message bot">
+    <div class="avatar">
+        <img src="/image.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
+    </div>
+    <div class="message">{{MSG}}</div>
+</div>
+'''
 
-    .stChatInput {
-        margin-top: 20px;
-    }
-</style>
-"""
+user_template = '''
+<div class="chat-message user">
+    <div class="avatar">
+        <img src="/face.jpg">
+    </div>    
+    <div class="message">{{MSG}}</div>
+</div>
+'''
